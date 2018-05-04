@@ -1,0 +1,259 @@
+List of IX Objects
+EVALUATION CONTEXT 
+ AQ$_ORDERS_QUEUETABLE_V 
+ AQ$_STREAMS_QUEUE_TABLE_V 
+ 
+INDEX 
+ SYS_C003540 
+ SYS_C003543 
+ SYS_C003548 
+ SYS_C003551 
+ SYS_IOT_TOP_45932 
+ SYS_IOT_TOP_45934 
+ SYS_IOT_TOP_45936 
+ SYS_IOT_TOP_45939 
+ SYS_IOT_TOP_45949 
+ SYS_IOT_TOP_45951 
+ SYS_IOT_TOP_45953 
+ SYS_IOT_TOP_45956 
+ 
+LOB 
+ SYS_LOB0000045926C00036$$ 
+ SYS_LOB0000045941C00028$$ 
+ SYS_LOB0000045941C00029$$ 
+ 
+QUEUE 
+ AQ$_ORDERS_QUEUETABLE_E 
+ AQ$_STREAMS_QUEUE_TABLE_E 
+ ORDERS_QUEUE 
+ STREAMS_QUEUE 
+ 
+RULE SET 
+ ORDERS_QUEUE_N 
+ ORDERS_QUEUE_R 
+ STREAMS_QUEUE_N 
+ STREAMS_QUEUE_R 
+ 
+SEQUENCE 
+ AQ$_ORDERS_QUEUETABLE_N 
+ AQ$_STREAMS_QUEUE_TABLE_N 
+ 
+TABLE 
+ AQ$_ORDERS_QUEUETABLE_G 
+ AQ$_ORDERS_QUEUETABLE_H 
+ AQ$_ORDERS_QUEUETABLE_I 
+ AQ$_ORDERS_QUEUETABLE_S 
+ AQ$_ORDERS_QUEUETABLE_T 
+ AQ$_STREAMS_QUEUE_TABLE_G 
+ AQ$_STREAMS_QUEUE_TABLE_H 
+ AQ$_STREAMS_QUEUE_TABLE_I 
+ AQ$_STREAMS_QUEUE_TABLE_S 
+ AQ$_STREAMS_QUEUE_TABLE_T 
+ ORDERS_QUEUETABLE 
+ STREAMS_QUEUE_TABLE 
+ SYS_IOT_OVER_45936 
+ SYS_IOT_OVER_45953 
+ 
+TYPE 
+ ORDER_EVENT_TYP 
+ 
+VIEW 
+ AQ$ORDERS_QUEUETABLE 
+ AQ$ORDERS_QUEUETABLE_R 
+ AQ$ORDERS_QUEUETABLE_S 
+ AQ$STREAMS_QUEUE_TABLE 
+ AQ$STREAMS_QUEUE_TABLE_R 
+ AQ$STREAMS_QUEUE_TABLE_S 
+ 
+
+IX Table Descriptions
+Table AQ$_ORDERS_QUEUETABLE_G
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ MSGID                                     NOT NULL RAW(16)
+ SUBSCRIBER#                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(30)
+ ADDRESS#                                  NOT NULL NUMBER
+ SIGN                                               SYS.AQ$_SIG_PROP
+ DBS_SIGN                                           SYS.AQ$_SIG_PROP
+ 
+Table AQ$_ORDERS_QUEUETABLE_H
+ Name                                Null?    Type
+ ------------------------------------ -------- ----------------------------
+ MSGID                                NOT NULL RAW(16)
+ SUBSCRIBER#                          NOT NULL NUMBER
+ NAME                                 NOT NULL VARCHAR2(30)
+ ADDRESS#                             NOT NULL NUMBER
+ DEQUEUE_TIME                                  TIMESTAMP(6) WITH LOCAL TIME ZONE
+ TRANSACTION_ID                                VARCHAR2(30)
+ DEQUEUE_USER                                  VARCHAR2(30)
+ PROPAGATED_MSGID                              RAW(16)
+ RETRY_COUNT                                   NUMBER
+ HINT                                          ROWID
+ SPARE                                         RAW(16)
+ 
+Table AQ$_ORDERS_QUEUETABLE_I
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ SUBSCRIBER#                          NOT NULL NUMBER
+ NAME                                 NOT NULL VARCHAR2(30)
+ QUEUE#                               NOT NULL NUMBER
+ MSG_ENQ_TIME                         NOT NULL TIMESTAMP(6) WITH LOCAL TIME ZONE
+ MSG_STEP_NO                          NOT NULL NUMBER
+ MSG_CHAIN_NO                         NOT NULL NUMBER
+ MSG_LOCAL_ORDER_NO                   NOT NULL NUMBER
+ MSGID NOT NULL                                RAW(16)
+ HINT                                          ROWID
+ SPARE                                         RAW(16)
+ 
+Table AQ$_ORDERS_QUEUETABLE_S 
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SUBSCRIBER_ID                             NOT NULL NUMBER
+ QUEUE_NAME                                NOT NULL VARCHAR2(30)
+ NAME                                               VARCHAR2(30)
+ ADDRESS                                            VARCHAR2(1024)
+ PROTOCOL                                           NUMBER
+ SUBSCRIBER_TYPE                                    NUMBER
+ RULE_NAME                                          VARCHAR2(30)
+ TRANS_NAME                                         VARCHAR2(61)
+ RULESET_NAME                                       VARCHAR2(65)
+ NEGATIVE_RULESET_NAME                              VARCHAR2(65)
+ 
+Table AQ$_ORDERS_QUEUETABLE_T
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ NEXT_DATE                            NOT NULL TIMESTAMP(6) WITH LOCAL TIME ZONE
+ TXN_ID NOT NULL                               VARCHAR2(30)
+ MSGID NOT NULL                                RAW(16)
+ ACTION                                        NUMBER
+ 
+Table AQ$_STREAMS_QUEUE_TABLE_G
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ MSGID                                     NOT NULL RAW(16)
+ SUBSCRIBER#                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(30)
+ ADDRESS#                                  NOT NULL NUMBER
+ SIGN                                               SYS.AQ$_SIG_PROP
+ DBS_SIGN                                           SYS.AQ$_SIG_PROP
+ 
+Table AQ$_STREAMS_QUEUE_TABLE_H
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ MSGID                                NOT NULL RAW(16)
+ SUBSCRIBER#                          NOT NULL NUMBER
+ NAME                                 NOT NULL VARCHAR2(30)
+ ADDRESS#                             NOT NULL NUMBER
+ DEQUEUE_TIME                                  TIMESTAMP(6) WITH LOCAL TIME ZONE
+ TRANSACTION_ID                                VARCHAR2(30)
+ DEQUEUE_USER                                  VARCHAR2(30)
+ PROPAGATED_MSGID                              RAW(16)
+ RETRY_COUNT                                   NUMBER
+ HINT                                          ROWID
+ SPARE                                              RAW(16)
+ 
+Table AQ$_STREAMS_QUEUE_TABLE_I
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ SUBSCRIBER#                          NOT NULL NUMBER
+ NAME                                 NOT NULL VARCHAR2(30)
+ QUEUE#                               NOT NULL NUMBER
+ MSG_ENQ_TID                          NOT NULL VARCHAR2(30)
+ SENDER#                              NOT NULL NUMBER
+ TXN_STEP#                            NOT NULL NUMBER
+ MSG_ENQ_TIME                         NOT NULL TIMESTAMP(6) WITH LOCAL TIME ZONE
+ MSG_STEP_NO                          NOT NULL NUMBER
+ MSG_CHAIN_NO                         NOT NULL NUMBER
+ MSG_LOCAL_ORDER_NO                   NOT NULL NUMBER
+ MSGID                                NOT NULL RAW(16)
+ HINT                                 ROWID
+ SPARE                                RAW(16)
+ 
+Table AQ$_STREAMS_QUEUE_TABLE_S
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SUBSCRIBER_ID                             NOT NULL NUMBER
+ QUEUE_NAME                                NOT NULL VARCHAR2(30)
+ NAME                                               VARCHAR2(30)
+ ADDRESS                                            VARCHAR2(1024)
+ PROTOCOL                                           NUMBER
+ SUBSCRIBER_TYPE                                    NUMBER
+ RULE_NAME                                          VARCHAR2(30)
+ TRANS_NAME                                         VARCHAR2(61)
+ RULESET_NAME                                       VARCHAR2(65)
+ NEGATIVE_RULESET_NAME                              VARCHAR2(65)
+ 
+Table AQ$_STREAMS_QUEUE_TABLE_T
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ NEXT_DATE                            NOT NULL TIMESTAMP(6) WITH LOCAL TIME ZONE
+ TXN_ID                               NOT NULL VARCHAR2(30)
+ MSGID                                NOT NULL RAW(16)
+ ACTION                               NUMBER
+ 
+Table ORDERS_QUEUETABLE
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ Q_NAME                                        VARCHAR2(30)
+ MSGID                                NOT NULL RAW(16)
+ CORRID                                        VARCHAR2(128)
+ PRIORITY                                      NUMBER
+ STATE                                         NUMBER
+ DELAY                                         TIMESTAMP(6) WITH LOCAL TIME ZONE
+ EXPIRATION                                    NUMBER
+ TIME_MANAGER_INFO                             TIMESTAMP(6) WITH LOCAL TIME ZONE
+ LOCAL_ORDER_NO                                NUMBER
+ CHAIN_NO                                      NUMBER
+ CSCN                                          NUMBER
+ DSCN                                          NUMBER
+ ENQ_TIME                                      TIMESTAMP(6) WITH LOCAL TIME ZONE
+ ENQ_UID                                       VARCHAR2(30)
+ ENQ_TID                                       VARCHAR2(30)
+ DEQ_TIME                                      TIMESTAMP(6) WITH LOCAL TIME ZONE
+ DEQ_UID                                       VARCHAR2(30)
+ DEQ_TID                                       VARCHAR2(30)
+ RETRY_COUNT                                   NUMBER
+ EXCEPTION_QSCHEMA                             VARCHAR2(30)
+ EXCEPTION_QUEUE                               VARCHAR2(30)
+ STEP_NO                                       NUMBER
+ RECIPIENT_KEY                                 NUMBER
+ DEQUEUE_MSGID                                 RAW(16)
+ SENDER_NAME                                   VARCHAR2(30)
+ SENDER_ADDRESS                                VARCHAR2(1024)
+ SENDER_PROTOCOL                               NUMBER
+ USER_DATA                                     ORDER_EVENT_TYP
+ USER_PROP                                     SYS.ANYDATA
+ 
+Table STREAMS_QUEUE_TABLE
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ Q_NAME                                        VARCHAR2(30)
+ MSGID                                NOT NULL RAW(16)
+ CORRID                                        VARCHAR2(128)
+ PRIORITY                                      NUMBER
+ STATE                                         NUMBER
+ DELAY                                         TIMESTAMP(6) WITH LOCAL TIME ZONE
+ EXPIRATION                                    NUMBER
+ TIME_MANAGER_INFO                             TIMESTAMP(6) WITH LOCAL TIME ZONE
+ LOCAL_ORDER_NO                                NUMBER
+ CHAIN_NO                                      NUMBER
+ CSCN                                          NUMBER
+ DSCN                                          NUMBER
+ ENQ_TIME                                      TIMESTAMP(6) WITH LOCAL TIME ZONE
+ ENQ_UID                                       VARCHAR2(30)
+ ENQ_TID                                       VARCHAR2(30)
+ DEQ_TIME                                      TIMESTAMP(6) WITH LOCAL TIME ZONE
+ DEQ_UID                                       VARCHAR2(30)
+ DEQ_TID                                       VARCHAR2(30)
+ RETRY_COUNT                                   NUMBER
+ EXCEPTION_QSCHEMA                             VARCHAR2(30)
+ EXCEPTION_QUEUE                               VARCHAR2(30)
+ STEP_NO                                       NUMBER
+ RECIPIENT_KEY                                 NUMBER
+ DEQUEUE_MSGID                                 RAW(16)
+ SENDER_NAME                                   VARCHAR2(30)
+ SENDER_ADDRESS                                VARCHAR2(1024)
+ SENDER_PROTOCOL                               NUMBER
+ USER_PROP                                     SYS.ANYDATA
+ USER_DATA                                     SYS.ANYDATA

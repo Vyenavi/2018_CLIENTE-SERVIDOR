@@ -1,0 +1,262 @@
+List of OE Objects
+FUNCTION 
+ GET_PHONE_NUMBER_F
+
+INDEX 
+ CUSTOMERS_PK
+ CUST_ACCOUNT_MANAGER_IX
+ CUST_EMAIL_IX
+ CUST_LNAME_IX
+ CUST_UPPER_NAME_IX
+ INVENTORY_IX
+ INV_PRODUCT_IX
+ ITEM_ORDER_IX
+ ITEM_PRODUCT_IX
+ ORDER_ITEMS_PK
+ ORDER_ITEMS_UK
+ ORDER_PK
+ ORD_CUSTOMER_IX
+ ORD_ORDER_DATE_IX
+ ORD_SALES_REP_IX
+ PRD_DESC_PK 
+ PRODUCT_INFORMATION_PK
+ PROD_NAME_IX
+ PROD_SUPPLIER_IX
+ PROMO_ID_PK
+ REFERENCE_IS_UNIQUE
+ SYS_C003584
+ SYS_C003587
+ SYS_C003588
+ SYS_C003589
+ SYS_C003590
+ WAREHOUSES_PK
+ WHS_LOCATION_IX
+ 
+LOB 
+ SYS_LOB0000045843C00022$$
+ SYS_LOB0000045843C00023$$
+ SYS_LOB0000045852C00003$$
+ SYS_LOB0000045852C00012$$
+ SYS_LOB0000045852C00013$$ 
+ SYS_LOB0000046019C00004$$ 
+ SYS_LOB0000046019C00005$$ 
+ SYS_LOB0000046019C00007$$ 
+ SYS_LOB0000046019C00011$$ 
+ SYS_LOB0000046019C00012$$ 
+ SYS_LOB0000046019C00015$$ 
+ SYS_LOB0000046019C00024$$ 
+ SYS_LOB0000046019C00031$$ 
+ SYS_LOB0000046019C00032$$ 
+ SYS_LOB0000046044C00003$$ 
+ 
+SEQUENCE 
+ ORDERS_SEQ 
+ 
+SYNONYM 
+ COUNTRIES 
+ DEPARTMENTS 
+ EMPLOYEES 
+ JOBS 
+ JOB_HISTORY 
+ LOCATIONS 
+ 
+TABLE 
+ CATEGORIES_TAB 
+ CUSTOMERS 
+ INVENTORIES 
+ ORDERS 
+ ORDER_ITEMS 
+ PRODUCT_DESCRIPTIONS 
+ PRODUCT_INFORMATION 
+ PRODUCT_REF_LIST_NESTEDTAB 
+ PROMOTIONS 
+ PURCHASEORDERS 
+ STYLESHEET_TAB 
+ SUBCATEGORY_REF_LIST_NESTEDTAB 
+ WAREHOUSES 
+ 
+TRIGGER 
+ INSERT_ORD_LINE 
+ ORDERS_ITEMS_TRG 
+ ORDERS_TRG 
+ PURCHASEORDERS$xd 
+ 
+TYPE 
+ CATALOG_TYP 
+ CATALOG_TYP 
+ CATEGORY_TYP 
+ CATEGORY_TYP 
+ COMPOSITE_CATEGORY_TYP 
+ COMPOSITE_CATEGORY_TYP 
+ CORPORATE_CUSTOMER_TYP 
+ CUSTOMER_TYP 
+ CUST_ADDRESS_TYP 
+ INVENTORY_LIST_TYP 
+ INVENTORY_TYP 
+ LEAF_CATEGORY_TYP 
+ LEAF_CATEGORY_TYP 
+ ORDER_ITEM_LIST_TYP 
+ ORDER_ITEM_TYP 
+ ORDER_LIST_TYP 
+ ORDER_TYP 
+ PHONE_LIST_TYP 
+ PRODUCT_INFORMATION_TYP 
+ PRODUCT_REF_LIST_TYP 
+ SUBCATEGORY_REF_LIST_TYP 
+ SYS_YOID0000046073$ 
+ SYS_YOID0000046075$ 
+ SYS_YOID0000046077$ 
+ SYS_YOID0000046079$ 
+ SYS_YOID0000046081$ 
+ WAREHOUSE_TYP 
+ XDBPO_ACTIONS_TYPE 
+ XDBPO_ACTION_COLLECTION 
+ XDBPO_ACTION_TYPE 
+ XDBPO_LINEITEMS_TYPE 
+ XDBPO_LINEITEM_COLLECTION 
+ XDBPO_LINEITEM_TYPE 
+ XDBPO_PART_TYPE 
+ XDBPO_REJECTION_TYPE 
+ XDBPO_SHIPINSTRUCTIONS_TYPE 
+ XDBPO_TYPE 
+ 
+TYPE BODY 
+ CATALOG_TYP 
+ COMPOSITE_CATEGORY_TYP 
+ LEAF_CATEGORY_TYP 
+ 
+VIEW 
+ ACCOUNT_MANAGERS 
+ BOMBAY_INVENTORY 
+ CUSTOMERS_VIEW 
+ DEPTVIEW 
+ OC_CORPORATE_CUSTOMERS 
+ OC_CUSTOMERS 
+ OC_INVENTORIES 
+ OC_ORDERS 
+ OC_PRODUCT_INFORMATION 
+ ORDERS_VIEW 
+ PRODUCTS 
+ PRODUCT_PRICES 
+ SYDNEY_INVENTORY 
+ TORONTO_INVENTORY 
+ 
+
+OE Table Descriptions
+Table CATEGORIES_TAB 
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CATEGORY_NAME                                      VARCHAR2(50)
+ CATEGORY_DESCRIPTION                               VARCHAR2(1000)
+ CATEGORY_ID                               NOT NULL NUMBER(2)
+ PARENT_CATEGORY_ID                                 NUMBER(2)
+ 
+Table CUSTOMERS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                               NOT NULL NUMBER(6)
+ CUST_FIRST_NAME                           NOT NULL VARCHAR2(20)
+ CUST_LAST_NAME                            NOT NULL VARCHAR2(20)
+ CUST_ADDRESS                                       CUST_ADDRESS_TYP
+ PHONE_NUMBERS                                      PHONE_LIST_TYP
+ NLS_LANGUAGE                                       VARCHAR2(3)
+ NLS_TERRITORY                                      VARCHAR2(30)
+ CREDIT_LIMIT                                       NUMBER(9,2)
+ CUST_EMAIL                                         VARCHAR2(30)
+ ACCOUNT_MGR_ID                                     NUMBER(6)
+ CUST_GEO_LOCATION                                  MDSYS.SDO_GEOMETRY
+ DATE_OF_BIRTH                                      DATE
+ MARITAL_STATUS                                     VARCHAR2(20)
+ GENDER                                             VARCHAR2(1)
+ INCOME_LEVEL                                       VARCHAR2(20)
+ 
+Table INVENTORIES
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ WAREHOUSE_ID                              NOT NULL NUMBER(3)
+ QUANTITY_ON_HAND                          NOT NULL NUMBER(8)
+ 
+Table ORDERS
+ Name                                 Null?    Type
+ ------------------------------------ -------- ----------------------------
+ ORDER_ID                             NOT NULL NUMBER(12)
+ ORDER_DATE                           NOT NULL TIMESTAMP(6) WITH LOCAL TIME ZONE
+ ORDER_MODE                                    VARCHAR2(8)
+ CUSTOMER_ID                          NOT NULL NUMBER(6)
+ ORDER_STATUS                                  NUMBER(2)
+ ORDER_TOTAL                                   NUMBER(8,2)
+ SALES_REP_ID                                  NUMBER(6)
+ PROMOTION_ID                                  NUMBER(6)
+ 
+Table ORDER_ITEMS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_ID                                  NOT NULL NUMBER(12)
+ LINE_ITEM_ID                              NOT NULL NUMBER(3)
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ UNIT_PRICE                                         NUMBER(8,2)
+ QUANTITY                                           NUMBER(8)
+ 
+Table PRODUCT_DESCRIPTIONS 
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ LANGUAGE_ID                               NOT NULL VARCHAR2(3)
+ TRANSLATED_NAME                           NOT NULL NVARCHAR2(50)
+ TRANSLATED_DESCRIPTION                    NOT NULL NVARCHAR2(2000)
+ 
+Table PRODUCT_INFORMATION
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ PRODUCT_NAME                                       VARCHAR2(50)
+ PRODUCT_DESCRIPTION                                VARCHAR2(2000)
+ CATEGORY_ID                                        NUMBER(2)
+ WEIGHT_CLASS                                       NUMBER(1)
+ WARRANTY_PERIOD                                    INTERVAL YEAR(2) TO MONTH
+ SUPPLIER_ID                                        NUMBER(6)
+ PRODUCT_STATUS                                     VARCHAR2(20)
+ LIST_PRICE                                         NUMBER(8,2)
+ MIN_PRICE                                          NUMBER(8,2)
+ CATALOG_URL                                        VARCHAR2(50)
+ 
+PRODUCT_REF_LIST_NESTEDTAB 
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COLUMN_VALUE                                       NUMBER(6)
+ 
+Table PROMOTIONS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROMO_ID                                  NOT NULL NUMBER(6)
+ PROMO_NAME                                         VARCHAR2(20)
+ 
+Table PURCHASEORDERS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+TABLE of SYS.XMLTYPE(XMLSchema 
+"http://www.oracle.com/xdb/ord.xsd" 
+Element "PurchaseOrder") 
+STORAGE Object-relational
+TYPE "XDBPO_TYPE" 
+ 
+Table STYLESHEET_TAB
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER
+ STYLESHEET                                         XMLTYPE
+ 
+Table SUBCATEGORY_REF_LIST_NESTEDTAB
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COLUMN_VALUE                                       REF OF CATEGORY_TYP
+ 
+Table WAREHOUSES
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ WAREHOUSE_ID                              NOT NULL NUMBER(3)
+ WAREHOUSE_SPEC                                     SYS.XMLTYPE
+ WAREHOUSE_NAME                                     VARCHAR2(35)
+ LOCATION_ID                                        NUMBER(4)
+ WH_GEO_LOCATION                                    MDSYS.SDO_GEOMETRY

@@ -1,0 +1,319 @@
+List of SH Objects
+DIMENSION 
+ CHANNELS_DIM 
+ CUSTOMERS_DIM 
+ PRODUCTS_DIM 
+ PROMOTIONS_DIM 
+ TIMES_DIM 
+ 
+INDEX 
+ CHANNELS_PK 
+ COSTS_PROD_BIX 
+ COSTS_TIME_BIX 
+ COUNTRIES_PK 
+ CUSTOMERS_GENDER_BIX 
+ CUSTOMERS_MARITAL_BIX 
+ CUSTOMERS_PK 
+ CUSTOMERS_YOB_BIX 
+ DR$SUP_TEXT_IDX$X 
+ FW_PSC_S_MV_CHAN_BIX 
+ FW_PSC_S_MV_PROMO_BIX 
+ FW_PSC_S_MV_SUBCAT_BIX 
+ FW_PSC_S_MV_WD_BIX 
+ PRODUCTS_PK 
+ PRODUCTS_PROD_CAT_IX 
+ PRODUCTS_PROD_STATUS_BIX 
+ PRODUCTS_PROD_SUBCAT_IX 
+ PROMO_PK 
+ SALES_CHANNEL_BIX 
+ SALES_CUST_BIX 
+ SALES_PROD_BIX 
+ SALES_PROMO_BIX 
+ SALES_TIME_BIX 
+ SUP_TEXT_IDX 
+ SYS_IOT_TOP_45927 
+ SYS_IOT_TOP_45932 
+ TIMES_PK 
+ 
+INDEX PARTITION 
+ COSTS_PROD_BIX 
+ COSTS_TIME_BIX 
+ SALES_CHANNEL_BIX 
+ SALES_CUST_BIX 
+ SALES_PROD_BIX 
+ SALES_PROMO_BIX 
+ SALES_TIME_BIX 
+ 
+LOB 
+ SYS_LOB0000045924C00006$$ 
+ SYS_LOB0000045929C00002$$ 
+ 
+MATERIALIZED VIEW 
+ CAL_MONTH_SALES_MV 
+ FWEEK_PSCAT_SALES_MV 
+ 
+TABLE 
+ CAL_MONTH_SALES_MV 
+ CHANNELS 
+ COSTS 
+ COUNTRIES 
+ CUSTOMERS 
+ DR$SUP_TEXT_IDX$I 
+ DR$SUP_TEXT_IDX$K 
+ DR$SUP_TEXT_IDX$N 
+ DR$SUP_TEXT_IDX$R 
+ FWEEK_PSCAT_SALES_MV 
+ MVIEW$_EXCEPTIONS 
+ PRODUCTS 
+ PROMOTIONS 
+ SALES 
+ SALES_TRANSACTIONS_EXT 
+ SUPPLEMENTARY_DEMOGRAPHICS 
+ TIMES 
+ 
+TABLE PARTITION 
+ COSTS 
+ SALES 
+ 
+VIEW 
+ PROFITS 
+ 
+
+SH Table Descriptions
+Table CAL_MONTH_SALES_MV
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CALENDAR_MONTH_DESC                       NOT NULL VARCHAR2(8)
+ DOLLARS                                            NUMBER
+ 
+Table CHANNELS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CHANNEL_ID                                NOT NULL NUMBER
+ CHANNEL_DESC                              NOT NULL VARCHAR2(20)
+ CHANNEL_CLASS                             NOT NULL VARCHAR2(20)
+ CHANNEL_CLASS_ID                          NOT NULL NUMBER
+ CHANNEL_TOTAL                             NOT NULL VARCHAR2(13)
+ CHANNEL_TOTAL_ID                          NOT NULL NUMBER
+ 
+Table COSTS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROD_ID                                   NOT NULL NUMBER
+ TIME_ID                                   NOT NULL DATE
+ PROMO_ID                                  NOT NULL NUMBER
+ CHANNEL_ID                                NOT NULL NUMBER
+ UNIT_COST                                 NOT NULL NUMBER(10,2)
+ UNIT_PRICE                                NOT NULL NUMBER(10,2)
+ 
+Table COUNTRIES
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COUNTRY_ID NOT                            NULL NUMBER
+ COUNTRY_ISO_CODE                          NOT NULL CHAR(2)
+ COUNTRY_NAME                              NOT NULL VARCHAR2(40)
+ COUNTRY_SUBREGION                         NOT NULL VARCHAR2(30)
+ COUNTRY_SUBREGION_ID                      NOT NULL NUMBER
+ COUNTRY_REGION                            NOT NULL VARCHAR2(20)
+ COUNTRY_REGION_ID                         NOT NULL NUMBER
+ COUNTRY_TOTAL                             NOT NULL VARCHAR2(11)
+ COUNTRY_TOTAL_ID                          NOT NULL NUMBER
+ COUNTRY_NAME_HIST                                  VARCHAR2(40)
+ 
+Table CUSTOMERS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUST_ID                                   NOT NULL NUMBER
+ CUST_FIRST_NAME                           NOT NULL VARCHAR2(20)
+ CUST_LAST_NAME                            NOT NULL VARCHAR2(40)
+ CUST_GENDER                               NOT NULL CHAR(1)
+ CUST_YEAR_OF_BIRTH                        NOT NULL NUMBER(4)
+ CUST_MARITAL_STATUS                                VARCHAR2(20)
+ CUST_STREET_ADDRESS                       NOT NULL VARCHAR2(40)
+ CUST_POSTAL_CODE                          NOT NULL VARCHAR2(10)
+ CUST_CITY                                 NOT NULL VARCHAR2(30)
+ CUST_CITY_ID                              NOT NULL NUMBER
+ CUST_STATE_PROVINCE                       NOT NULL VARCHAR2(40)
+ CUST_STATE_PROVINCE_ID                    NOT NULL NUMBER
+ COUNTRY_ID                                NOT NULL NUMBER
+ CUST_MAIN_PHONE_NUMBER                    NOT NULL VARCHAR2(25)
+ CUST_INCOME_LEVEL                                  VARCHAR2(30)
+ CUST_CREDIT_LIMIT                                  NUMBER
+ CUST_EMAIL                                         VARCHAR2(30)
+ CUST_TOTAL                                NOT NULL VARCHAR2(14)
+ CUST_TOTAL_ID                             NOT NULL NUMBER
+ CUST_SRC_ID                                        NUMBER
+ CUST_EFF_FROM                                      DATE
+ CUST_EFF_TO                                        DATE
+ CUST_VALID                                         VARCHAR2(1)
+ 
+Table DR_$SUP_TEXT_IDX$I
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TOKEN_TEXT                                NOT NULL VARCHAR2(64)
+ TOKEN_TYPE                                NOT NULL NUMBER(3)
+ TOKEN_FIRST                               NOT NULL NUMBER(10)
+ TOKEN_LAST                                NOT NULL NUMBER(10)
+ TOKEN_COUNT                               NOT NULL NUMBER(10)
+ TOKEN_INFO                                         BLOB
+ 
+Table DR$SUP_TEXT_IDX$K
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DOCID                                              NUMBER(38)
+ TEXTKEY                                   NOT NULL ROWID
+ 
+Table DR$SUP_TEXT_IDX$N
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NLT_DOCID                                 NOT NULL NUMBER(38)
+ NLT_MARK                                  NOT NULL CHAR(1)
+ 
+Table DR$SUP_TEXT_IDX$R
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ROW_NO                                             NUMBER(3)
+ DATA                                               BLOB
+ 
+Table FWEEK_PSCAT_SALES_MV
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ WEEK_ENDING_DAY                           NOT NULL DATE
+ PROD_SUBCATEGORY                          NOT NULL VARCHAR2(50)
+ DOLLARS                                            NUMBER
+ CHANNEL_ID                                NOT NULL NUMBER
+ PROMO_ID                                  NOT NULL NUMBER
+ 
+Table MVIEW$_EXCEPTIONS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER                                     NOT NULL VARCHAR2(30)
+ TABLE_NAME                                NOT NULL VARCHAR2(30)
+ DIMENSION_NAME                            NOT NULL VARCHAR2(30)
+ RELATIONSHIP                              NOT NULL VARCHAR2(11)
+ BAD_ROWID                                 NOT NULL ROWID
+ 
+Table PRODUCTS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROD_ID                                   NOT NULL NUMBER(6)
+ PROD_NAME                                 NOT NULL VARCHAR2(50)
+ PROD_DESC                                 NOT NULL VARCHAR2(4000)
+ PROD_SUBCATEGORY                          NOT NULL VARCHAR2(50)
+ PROD_SUBCATEGORY_ID                       NOT NULL NUMBER
+ PROD_SUBCATEGORY_DESC                     NOT NULL VARCHAR2(2000)
+ PROD_CATEGORY                             NOT NULL VARCHAR2(50)
+ PROD_CATEGORY_ID                          NOT NULL NUMBER
+ PROD_CATEGORY_DESC                        NOT NULL VARCHAR2(2000)
+ PROD_WEIGHT_CLASS                         NOT NULL NUMBER(3)
+ PROD_UNIT_OF_MEASURE                               VARCHAR2(20)
+ PROD_PACK_SIZE                            NOT NULL VARCHAR2(30)
+ SUPPLIER_ID                               NOT NULL NUMBER(6)
+ PROD_STATUS                               NOT NULL VARCHAR2(20)
+ PROD_LIST_PRICE                           NOT NULL NUMBER(8,2)
+ PROD_MIN_PRICE                            NOT NULL NUMBER(8,2)
+ PROD_TOTAL                                NOT NULL VARCHAR2(13)
+ PROD_TOTAL_ID                             NOT NULL NUMBER
+ PROD_SRC_ID                                        NUMBER
+ PROD_EFF_FROM                                      DATE
+ PROD_EFF_TO                                        DATE
+ PROD_VALID                                         VARCHAR2(1)
+ 
+Table PROMOTIONS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROMO_ID                                  NOT NULL NUMBER(6)
+ PROMO_NAME                                NOT NULL VARCHAR2(30)
+ PROMO_SUBCATEGORY                         NOT NULL VARCHAR2(30)
+ PROMO_SUBCATEGORY_ID                      NOT NULL NUMBER
+ PROMO_CATEGORY                            NOT NULL VARCHAR2(30)
+ PROMO_CATEGORY_ID                         NOT NULL NUMBER
+ PROMO_COST                                NOT NULL NUMBER(10,2)
+ PROMO_BEGIN_DATE                          NOT NULL DATE
+ PROMO_END_DATE                            NOT NULL DATE
+ PROMO_TOTAL                               NOT NULL VARCHAR2(15)
+ PROMO_TOTAL_ID                            NOT NULL NUMBER
+ 
+Table SALES
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROD_ID                                   NOT NULL NUMBER
+ CUST_ID                                   NOT NULL NUMBER
+ TIME_ID                                   NOT NULL DATE
+ CHANNEL_ID                                NOT NULL NUMBER
+ PROMO_ID                                  NOT NULL NUMBER
+ QUANTITY_SOLD                             NOT NULL NUMBER(10,2)
+ AMOUNT_SOLD                               NOT NULL NUMBER(10,2)
+ 
+Table SALES_TRANSACTIONS_EXT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PROD_ID                                            NUMBER
+ CUST_ID                                            NUMBER
+ TIME_ID                                            DATE
+ CHANNEL_ID                                         NUMBER
+ PROMO_ID                                           NUMBER
+ QUANTITY_SOLD                                      NUMBER
+ AMOUNT_SOLD                                        NUMBER(10,2)
+ UNIT_COST                                          NUMBER(10,2)
+ UNIT_PRICE                                         NUMBER(10,2)
+ 
+Table SUPPLEMENTARY_DEMOGRAPHICS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUST_ID                                   NOT NULL NUMBER
+ EDUCATION                                          VARCHAR2(21)
+ OCCUPATION                                         VARCHAR2(21)
+ HOUSEHOLD_SIZE                                     VARCHAR2(21)
+ YRS_RESIDENCE                                      NUMBER
+ AFFINITY_CARD                                      NUMBER(10)
+ BULK_PACK_DISKETTES                                NUMBER(10)
+ FLAT_PANEL_MONITOR                                 NUMBER(10)
+ HOME_THEATER_PACKAGE                               NUMBER(10)
+ BOOKKEEPING_APPLICATION                            NUMBER(10)
+ PRINTER_SUPPLIES                                   NUMBER(10)
+ Y_BOX_GAMES                                        NUMBER(10)
+ OS_DOC_SET_KANJI                                   NUMBER(10)
+ COMMENTS                                           VARCHAR2(4000)
+ 
+Table TIMES
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TIME_ID                                   NOT NULL DATE
+ DAY_NAME                                  NOT NULL VARCHAR2(9)
+ DAY_NUMBER_IN_WEEK                        NOT NULL NUMBER(1)
+ DAY_NUMBER_IN_MONTH                       NOT NULL NUMBER(2)
+ CALENDAR_WEEK_NUMBER                      NOT NULL NUMBER(2)
+ FISCAL_WEEK_NUMBER                        NOT NULL NUMBER(2)
+ WEEK_ENDING_DAY                           NOT NULL DATE
+ WEEK_ENDING_DAY_ID                        NOT NULL NUMBER
+ CALENDAR_MONTH_NUMBER                     NOT NULL NUMBER(2)
+ FISCAL_MONTH_NUMBER                       NOT NULL NUMBER(2)
+ CALENDAR_MONTH_DESC                       NOT NULL VARCHAR2(8)
+ CALENDAR_MONTH_ID                         NOT NULL NUMBER
+ FISCAL_MONTH_DESC                         NOT NULL VARCHAR2(8)
+ FISCAL_MONTH_ID                           NOT NULL NUMBER
+ DAYS_IN_CAL_MONTH                         NOT NULL NUMBER
+ DAYS_IN_FIS_MONTH                         NOT NULL NUMBER
+ END_OF_CAL_MONTH                          NOT NULL DATE
+ END_OF_FIS_MONTH                          NOT NULL DATE
+ CALENDAR_MONTH_NAME                       NOT NULL VARCHAR2(9)
+ FISCAL_MONTH_NAME                         NOT NULL VARCHAR2(9)
+ CALENDAR_QUARTER_DESC                     NOT NULL CHAR(7)
+ CALENDAR_QUARTER_ID                       NOT NULL NUMBER
+ FISCAL_QUARTER_DESC                       NOT NULL CHAR(7)
+ FISCAL_QUARTER_ID                         NOT NULL NUMBER
+ DAYS_IN_CAL_QUARTER                       NOT NULL NUMBER
+ DAYS_IN_FIS_QUARTER                       NOT NULL NUMBER
+ END_OF_CAL_QUARTER                        NOT NULL DATE
+ END_OF_FIS_QUARTER                        NOT NULL DATE
+ CALENDAR_QUARTER_NUMBER                   NOT NULL NUMBER(1)
+ FISCAL_QUARTER_NUMBER                     NOT NULL NUMBER(1)
+ CALENDAR_YEAR                             NOT NULL NUMBER(4)
+ CALENDAR_YEAR_ID                          NOT NULL NUMBER
+ FISCAL_YEAR                               NOT NULL NUMBER(4)
+ FISCAL_YEAR_ID                            NOT NULL NUMBER
+ DAYS_IN_CAL_YEAR                          NOT NULL NUMBER
+ DAYS_IN_FIS_YEAR                          NOT NULL NUMBER
+ END_OF_CAL_YEAR                           NOT NULL DATE
+ END_OF_FIS_YEAR                           NOT NULL DATE

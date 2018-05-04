@@ -1,0 +1,68 @@
+List of PM Objects
+INDEX 
+ ONLINEMEDIA_PK 
+ PRINTMEDIA_PK 
+ SYS_C003538 
+ 
+LOB 
+ SYS_LOB0000045882C00003$$ 
+ SYS_LOB0000045882C00017$$ 
+ SYS_LOB0000045882C00019$$ 
+ SYS_LOB0000045882C00034$$ 
+ SYS_LOB0000045882C00042$$ 
+ SYS_LOB0000045882C00054$$ 
+ SYS_LOB0000045882C00062$$ 
+ SYS_LOB0000045882C00069$$ 
+ SYS_LOB0000045882C00071$$ 
+ SYS_LOB0000045882C00080$$ 
+ SYS_LOB0000045907C00003$$ 
+ SYS_LOB0000045907C00004$$ 
+ SYS_LOB0000045907C00005$$ 
+ SYS_LOB0000045907C00006$$ 
+ SYS_LOB0000045907C00009$$ 
+ SYS_LOB0000045907C00015$$ 
+ SYS_LOB0000045908C00004$$ 
+ 
+TABLE 
+ ONLINE_MEDIA 
+ PRINT_MEDIA 
+ TEXTDOCS_NESTEDTAB 
+ 
+TYPE 
+ ADHEADER_TYP 
+ TEXTDOC_TAB 
+ TEXTDOC_TYP 
+ 
+
+PM Table Descriptions
+Table ONLINE_MEDIA
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ PRODUCT_PHOTO                                      ORDSYS.ORDIMAGE
+ PRODUCT_PHOTO_SIGNATURE                            ORDSYS.ORDIMAGESIGNATURE
+ PRODUCT_THUMBNAIL                                  ORDSYS.ORDIMAGE
+ PRODUCT_VIDEO                                      ORDSYS.ORDVIDEO
+ PRODUCT_AUDIO                                      ORDSYS.ORDAUDIO
+ PRODUCT_TEXT                                       CLOB
+ PRODUCT_TESTIMONIALS                               ORDSYS.ORDDOC
+ 
+ Table PRINT_MEDIA
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PRODUCT_ID                                NOT NULL NUMBER(6)
+ AD_ID                                     NOT NULL NUMBER(6)
+ AD_COMPOSITE                                       BLOB
+ AD_SOURCETEXT                                      CLOB
+ AD_FINALTEXT                                       CLOB
+ AD_FLTEXTN                                         NCLOB
+ AD_TEXTDOCS_NTAB                                   TEXTDOC_TAB
+ AD_PHOTO                                           BLOB
+ AD_GRAPHIC                                         BINARY FILE LOB
+ AD_HEADER                                          ADHEADER_TYP
+ 
+Table TEXTDOCS_NESTEDTAB 
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DOCUMENT_TYP                                       VARCHAR2(32)
+ FORMATTED_DOC                                      BLOB
